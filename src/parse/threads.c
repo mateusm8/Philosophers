@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 20:08:47 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/08 15:21:15 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/08 16:48:12 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	usleep(500);
+	if (philo->id % 2 == 0)
+		usleep(1000);
+	else
+		usleep(philo->data->time_to_eat / 2);
 	while (get_stop(philo->data) == 0)
 	{
 		if (get_stop(philo->data) == 0)
