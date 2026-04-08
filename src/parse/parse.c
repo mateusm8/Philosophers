@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 09:32:08 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/08 15:18:46 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/08 20:24:54 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	parse(t_data *data, int ac, char **av)
 	if (!parse_args(ac))
 	{
 		write(2, "Number of inputs are invalid.\n", 30);
+		free(data);
 		exit (1);
 	}
 	while (i < ac)
@@ -72,10 +73,10 @@ void	parse(t_data *data, int ac, char **av)
 		if (!is_positive_number(av[i], i))
 		{
 			write(2, "Number of params are invalid.\n", 30);
+			free(data);
 			exit(1);
 		}
 		i++;
 	}
-	write(1, "All set, init philos\n", 21);
 	populate_data(data, ac, av);
 }

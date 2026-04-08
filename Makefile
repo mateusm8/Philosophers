@@ -1,7 +1,7 @@
 NAME = philosophers
 CC = cc
 
-CFLAGS = -g -Iinclude -Wall -Wextra -Werror # -fsanitize=address -fno-omit-frame-pointer 
+CFLAGS = -Iinclude -Wall -Wextra -Werror #-fsanitize=thread # -fno-omit-frame-pointer 
 LDFLAGS = -pthread
 
 SRC = 	src/execution/actions.c \
