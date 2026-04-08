@@ -5,14 +5,18 @@ CFLAGS = -g -Iinclude -Wall -Wextra -Werror # -fsanitize=address -fno-omit-frame
 LDFLAGS = -pthread
 
 SRC = 	src/execution/actions.c \
+		src/execution/comp_actions.c \
+		src/execution/meals_and_death.c \
 		src/execution/monitor.c \
 		src/execution/philosophers.c \
+		src/execution/time_and_stop.c \
 		src/parse/cleanup.c \
 		src/parse/init.c \
+		src/parse/overflow.c \
 		src/parse/parse.c \
 		src/parse/populate.c \
 		src/parse/threads.c \
-		src/utils/ft_atol.c
+		src/utils/ft_atol.c \
 	
 OBJ = $(SRC:src/%.c=obj/%.o)
 

@@ -6,13 +6,13 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 16:13:40 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/08 12:42:50 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/08 15:10:30 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_data	*data;
 	int		monitor_status;

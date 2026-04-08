@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:40:39 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/03 22:27:12 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/08 15:13:54 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	clean_data(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->forks_init)

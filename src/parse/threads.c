@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 20:08:47 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/08 12:50:08 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/08 15:21:15 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*philo_routine(void *arg)
 {
-    t_philo	*philo;
+	t_philo	*philo;
 
-    philo = (t_philo *)arg;
+	philo = (t_philo *)arg;
 	usleep(500);
-    while (get_stop(philo->data) == 0)
+	while (get_stop(philo->data) == 0)
 	{
 		if (get_stop(philo->data) == 0)
 			philo_eat(philo);
@@ -27,7 +27,7 @@ void	*philo_routine(void *arg)
 		if (get_stop(philo->data) == 0)
 			philo_think(philo);
 	}
-    return (NULL);
+	return (NULL);
 }
 
 int	create_thread(t_data *data)
@@ -35,7 +35,6 @@ int	create_thread(t_data *data)
 	int	i;
 
 	i = 0;
-
 	data->start_time = get_time_ms();
 	if (data->start_time == -1)
 		return (0);
@@ -43,7 +42,7 @@ int	create_thread(t_data *data)
 	{
 		data->philos[i].last_meal = data->start_time;
 		if (pthread_create(&data->philos[i].thread, NULL,
-			philo_routine, &data->philos[i]) != 0)
+				philo_routine, &data->philos[i]) != 0)
 			return (join_threads(data), 0);
 		data->threads_created++;
 		i++;
@@ -64,4 +63,3 @@ int	join_threads(t_data *data)
 	}
 	return (1);
 }
-

@@ -6,53 +6,15 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 09:32:08 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/03 21:09:04 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/08 15:18:46 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static int	check_overflow_int(char *str)
-{
-	int	i;
-	int	acc;
-	int	nb;
-
-	i = 0;
-	acc = 0;
-	while(str[i])
-	{
-		nb = str[i] - 48;
-		if (acc > (INT_MAX - nb) / 10)
-			return (0);
-		acc = acc * 10 + nb;
-		i++;
-	}
-	return (1);
-}
-
-static int	check_overflow_long(char *str)
-{
-	int	i;
-	long	acc;
-	long	nb;
-
-	i = 0;
-	acc = 0;
-	while (str[i])
-	{
-		nb = str[i] - 48;
-		if (acc > (LONG_MAX - nb) / 10)
-			return (0);
-		acc = acc * 10 + nb;
-		i++;
-	}
-	return (1);
-}
-
 static int	is_number(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str == NULL || !str[i])
@@ -110,7 +72,7 @@ void	parse(t_data *data, int ac, char **av)
 		if (!is_positive_number(av[i], i))
 		{
 			write(2, "Number of params are invalid.\n", 30);
-			exit(1);	
+			exit(1);
 		}
 		i++;
 	}
