@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 15:06:39 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/08 17:08:40 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/10 22:55:23 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,18 @@
 
 void	lock_fork(t_philo *philo)
 {
-	pthread_mutex_t	*f1;
-	pthread_mutex_t	*f2;
-
 	philo->forks_at_hand = 0;
 	if (philo->left_fork == philo->right_fork)
 	{
-		if (pthread_mutex_lock(philo->left_fork) == 0)
-			philo->forks_at_hand = 1;
+		pthread_mutex_lock(philo->left_fork);
+		print_fork(philo);
+		philo->forks_at_hand = 1;
 		return ;
 	}
-	if (philo->left_fork < philo->right_fork)
-		(f1 = philo->left_fork, f2 = philo->right_fork);
-	else
-		(f1 = philo->right_fork, f2 = philo->left_fork);
-	if (pthread_mutex_lock(f1) != 0)
-		return ;
-	if (pthread_mutex_lock(f2) != 0)
-	{
-		pthread_mutex_unlock(f1);
-		return ;
-	}
-	philo->forks_at_hand = 2;
+	else if (philo->left_fork < philo->right_fork)
+		fork_two_h(philo, philo->left_fork, philo->right_fork);
+	else if (philo->left_fork > philo->right_fork)
+		fork_two_h(philo, philo->right_fork, philo->left_fork);
 }
 
 void	unlock_fork(t_philo *philo)
@@ -88,4 +78,26 @@ void	eat_action(t_philo *philo, long now)
 	pthread_mutex_unlock(&philo->data->write_lock);
 	usleep(philo->data->time_to_eat * 1000);
 	unlock_fork(philo);
+}
+
+void	fork_two_h(t_philo *philo, pthread_mutex_t *f1, pthread_mutex_t *f2)
+{
+	if (pthread_mutex_lock(f1) == 0)
+	{
+		print_fork(philo);
+		philo->forks_at_hand = 1;
+		if (pthread_mutex_lock(f2) == 0)
+		{
+			print_fork(philo);
+			philo->forks_at_hand = 2;
+			return ;
+		}
+		else
+		{
+			pthread_mutex_unlock(f1);
+			philo->forks_at_hand = 0;
+			return ;
+		}
+	}
+	return ;
 }

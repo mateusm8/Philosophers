@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 15:07:56 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/08 15:37:19 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/10 22:56:41 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,13 @@ void	set_stop(t_data *data, int value)
 	pthread_mutex_lock(&data->stop_lock);
 	data->stop = value;
 	pthread_mutex_unlock(&data->stop_lock);
+}
+
+void	print_fork(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->write_lock);
+	if (get_stop(philo->data) == 0)
+		printf("%ld %d has taken a fork\n",
+			get_time_ms() - philo->data->start_time, philo->id);
+	pthread_mutex_unlock(&philo->data->write_lock);
 }
