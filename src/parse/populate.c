@@ -6,19 +6,19 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 20:45:02 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/08 12:18:58 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 17:58:06 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	populate_data(t_data *data, int ac, char **av)
+void	populate_data(t_data *data, char **av)
 {
 	data->num_philos = (int)ft_atol(av[1]);
 	data->time_to_die = ft_atol(av[2]);
 	data->time_to_eat = ft_atol(av[3]);
 	data->time_to_sleep = ft_atol(av[4]);
-	if (ac == 5)
+	if (!av[5])
 		data->meals_required = -1;
 	else
 		data->meals_required = (int)ft_atol(av[5]);

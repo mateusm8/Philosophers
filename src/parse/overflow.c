@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 15:17:20 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/08 15:37:50 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 16:52:06 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	check_overflow_int(char *str)
 {
-	int	i;
-	int	acc;
-	int	nb;
+	int				i;
+	unsigned int	acc;
+	unsigned int	nb;
 
 	i = 0;
 	acc = 0;
@@ -33,9 +33,9 @@ int	check_overflow_int(char *str)
 
 int	check_overflow_long(char *str)
 {
-	int		i;
-	long	acc;
-	long	nb;
+	int				i;
+	unsigned long	acc;
+	unsigned long	nb;
 
 	i = 0;
 	acc = 0;

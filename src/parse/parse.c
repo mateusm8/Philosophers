@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 09:32:08 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/10 22:22:15 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 18:01:01 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ static int	is_positive_number(char	*number, int nb)
 			return (0);
 	}
 	value = ft_atol(number);
-	if (value > 0)
-		return (1);
-	return (0);
+	return (value);
 }
 
 static int	parse_args(int ac)
@@ -60,8 +58,10 @@ static int	parse_args(int ac)
 void	parse(t_data *data, int ac, char **av)
 {
 	int	i;
+	int	value;
 
 	i = 1;
+	value = 0;
 	if (!parse_args(ac))
 	{
 		write(2, "Number of inputs are invalid.\n", 30);
@@ -70,13 +70,14 @@ void	parse(t_data *data, int ac, char **av)
 	}
 	while (i < ac)
 	{
-		if (!is_positive_number(av[i], i))
+		value = is_positive_number(av[i], i);
+		if (value < 0 || (value == 0 && i != 5))
 		{
-			write(2, "Number of params are invalid.\n", 30);
+			write(2, "One or more params are invalid.\n", 35);
 			free(data);
 			exit(1);
 		}
 		i++;
 	}
-	populate_data(data, ac, av);
+	populate_data(data, av);
 }

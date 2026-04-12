@@ -1,7 +1,7 @@
 NAME = philosophers
 CC = cc
 
-CFLAGS = -Iinclude -Wall -Wextra -Werror #-fsanitize=thread # -fno-omit-frame-pointer 
+CFLAGS = -Iinclude -Wall -Wextra -Werror #-g -fsanitize=thread -fno-omit-frame-pointer 
 LDFLAGS = -pthread
 
 SRC = 	src/execution/actions.c \
@@ -23,7 +23,7 @@ OBJ = $(SRC:src/%.c=obj/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
+	@$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LDFLAGS)
 	@echo "Makefile successfully compiled"
 
 obj/%.o: src/%.c
