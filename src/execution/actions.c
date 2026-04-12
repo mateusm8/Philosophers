@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 11:16:56 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/12 19:52:10 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 20:10:04 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void	philo_sleep(t_philo *philo)
 	if (philo->data->time_to_sleep > philo->data->time_to_die)
 		wait_for_die(philo);
 	else
-		usleep(philo->data->time_to_sleep * 1000);
+		sleep_until(get_time_ms() + philo->data->time_to_sleep,
+			philo->data);
 }
 
 void	wait_for_die(t_philo *philo)

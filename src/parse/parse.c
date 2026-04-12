@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 09:32:08 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/12 18:01:01 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 20:16:28 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	parse_args(int ac)
 	return (1);
 }
 
-void	parse(t_data *data, int ac, char **av)
+int	parse(t_data *data, int ac, char **av)
 {
 	int	i;
 	int	value;
@@ -66,7 +66,7 @@ void	parse(t_data *data, int ac, char **av)
 	{
 		write(2, "Number of inputs are invalid.\n", 30);
 		free(data);
-		exit (1);
+		return (0);
 	}
 	while (i < ac)
 	{
@@ -75,9 +75,10 @@ void	parse(t_data *data, int ac, char **av)
 		{
 			write(2, "One or more params are invalid.\n", 35);
 			free(data);
-			exit(1);
+			return (0);
 		}
 		i++;
 	}
 	populate_data(data, av);
+	return (1);
 }

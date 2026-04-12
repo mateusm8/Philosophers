@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 16:13:40 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/12 17:06:00 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 20:17:20 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	main(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (1);
-	parse(data, ac, av);
+	if (!parse(data, ac, av))
+		return (1);
 	if (!init_global_mutexes(data) || !init_forks(data)
 		|| !init_philos(data) || !create_thread(data))
 		return (cleanup(data), 1);

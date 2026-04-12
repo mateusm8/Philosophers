@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 15:34:40 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/12 19:47:04 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 20:22:37 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_data
 }	t_data;
 
 long	ft_atol(const char *str);
-void	parse(t_data *data, int ac, char **av);
+int		parse(t_data *data, int ac, char **av);
 void	populate_data(t_data *data, char **av);
 void	populate_philos(t_philo *philo, t_data *data, int i);
 int		init_forks(t_data *data);
