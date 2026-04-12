@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 15:07:56 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/10 22:56:41 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 19:51:52 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,14 @@ void	print_fork(t_philo *philo)
 		printf("%ld %d has taken a fork\n",
 			get_time_ms() - philo->data->start_time, philo->id);
 	pthread_mutex_unlock(&philo->data->write_lock);
+}
+
+void	sleep_until(long time_to_awake, t_data *data)
+{
+	while (get_time_ms() < time_to_awake)
+	{
+		usleep(500);
+		if (get_stop(data) != 0)
+			break ;
+	}
 }

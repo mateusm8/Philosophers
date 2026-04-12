@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 15:06:39 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/10 22:55:23 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 19:33:04 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ void	eat_action(t_philo *philo, long now)
 	}
 	printf("%ld %d is eating\n", now - philo->data->start_time, philo->id);
 	pthread_mutex_unlock(&philo->data->write_lock);
-	usleep(philo->data->time_to_eat * 1000);
+	if (philo->data->time_to_eat > philo->data->time_to_die)
+		wait_for_die(philo);
+	else
+		usleep(philo->data->time_to_eat * 1000);
 	unlock_fork(philo);
 }
 

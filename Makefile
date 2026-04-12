@@ -39,22 +39,4 @@ fclean: clean
 
 re: fclean all
 
-reclear:
-	make re && clear
-
-r: reclear
-	@./$(NAME)
-
-v: reclear
-	 valgrind  ./$(NAME)
-
-vl: reclear
-	valgrind --leak-check=full --show-leak-kinds=all  ./$(NAME)
-
-vc: reclear
-	valgrind --track-origins=yes  ./$(NAME)
-
-vall: reclear
-	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes  ./$(NAME)
-
-.PHONY: all clean fclean re r
+.PHONY: all clean fclean re

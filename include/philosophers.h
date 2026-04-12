@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 15:34:40 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/12 17:59:28 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 19:47:04 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ int		check_overflow_int(char *str);
 void	*philo_routine(void *arg);
 void	print_fork(t_philo *philo);
 void	fork_two_h(t_philo *philo, pthread_mutex_t *f1, pthread_mutex_t *f2);
+void	wait_for_die(t_philo *philo);
+void	sleep_until(long time_to_awake, t_data *data);
 
 #endif

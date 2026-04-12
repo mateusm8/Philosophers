@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 11:16:56 by matmagal          #+#    #+#             */
-/*   Updated: 2026/04/12 18:03:52 by matmagal         ###   ########.fr       */
+/*   Updated: 2026/04/12 19:52:10 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,14 @@ void	philo_sleep(t_philo *philo)
 		printf("%ld %d is sleeping\n",
 			now - philo->data->start_time, philo->id);
 	pthread_mutex_unlock(&philo->data->write_lock);
-	usleep(philo->data->time_to_sleep * 1000);
+	if (philo->data->time_to_sleep > philo->data->time_to_die)
+		wait_for_die(philo);
+	else
+		usleep(philo->data->time_to_sleep * 1000);
+}
+
+void	wait_for_die(t_philo *philo)
+{
+	while (get_stop(philo->data) == 0)
+		usleep(500);
 }
